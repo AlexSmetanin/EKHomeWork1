@@ -17,31 +17,31 @@ public class LoginPageTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    private By signInLink = By.xpath("//div//a[@class='HeaderMenu-link no-underline mr-3']");
+    private By signInLink = By.xpath("//a[@href='/login']");
     private By usernameField = By.xpath("//input[@id='login_field']");
     private By passwordField = By.xpath("//input[@id='password']");
     private By submitButton = By.xpath("//input[@name='commit']");
     private By avatarButton = By.xpath("//div//summary//img[@class='avatar']");
-    private By singOutButton = By.xpath(("//div//details-menu//button[@data-ga-click='Header, sign out, icon:logout']"));
+    private By singOutButton = By.xpath(("(//button[contains(.,'Sign out')])[2]"));
 
     @BeforeClass
     public void setUp()
     {
         System.setProperty("webdriver.chrome.driver",
                 new File(LoginPageTest.class.getResource("/chromedriver.exe").getFile()).getPath());
-    driver = new ChromeDriver();
-    wait = new WebDriverWait(driver, 30);
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, 30);
     }
 
     @DataProvider
     public Object[][] getCredentials() {
         return new Object[][]{
-                {"http://github.com", "AlexSmetanin", "Printer!23"},  //"qtester345@gmail.com", "Qwerty123!@#1"
+                {"http://github.com", "AlexSmetanin", "Printer!23"},
         };
     }
 
     @Test(dataProvider = "getCredentials")
-    public void createNewOrder(String url, String login, String password) {
+    public void login(String url, String login, String password) {
         driver.get(url);
         driver.manage().window().maximize();
 
@@ -54,11 +54,10 @@ public class LoginPageTest {
         driver.findElement(submitButton).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(avatarButton));
-        WebElement avatar = driver.findElement(avatarButton);
-        String userName = avatar.getAttribute("alt").toString().substring(1);
+        String userName = driver.findElement(avatarButton).getAttribute("alt").toString().substring(1);
         assertEquals(login, userName);
 
-        avatar.click();
+        driver.findElement(avatarButton).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(singOutButton));
         driver.findElement(singOutButton).click();
     }
