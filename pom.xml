@@ -16,6 +16,22 @@
         </repository>
     </repositories>
 
+    <properties>
+        <suite.name>insta.xml</suite.name>
+        <browser.name>chrome</browser.name>
+        <headless>false</headless>
+        <chrome.driver.path>/driver/chromedriver.exe</chrome.driver.path>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>no-headless</id>
+            <properties>
+                <headless>true</headless>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -30,4 +46,33 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/${suite.name}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browser.name>${browser.name}</browser.name>
+                        <chrome.driver.path>${chrome.driver.path}</chrome.driver.path>
+
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
