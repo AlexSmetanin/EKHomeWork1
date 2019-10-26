@@ -6,14 +6,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import pages.HomePage;
+import pages.MainPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-
 class BaseTest {
 
     WebDriver driver;
+    HomePage homePage;
+    MainPage mainPage;
     WebDriverWait wait;
 
     @BeforeSuite
@@ -28,7 +31,8 @@ class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
-
+        homePage = new HomePage(driver, wait);
+        mainPage = new MainPage(driver, wait);
     }
 
     @DataProvider
