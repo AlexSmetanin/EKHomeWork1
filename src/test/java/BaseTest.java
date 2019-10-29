@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import pages.BlogPage;
 import pages.HomePage;
 import pages.MainPage;
 
@@ -17,6 +18,7 @@ class BaseTest {
     WebDriver driver;
     HomePage homePage;
     MainPage mainPage;
+    BlogPage blogPage;
     WebDriverWait wait;
 
     @BeforeSuite
@@ -33,6 +35,7 @@ class BaseTest {
         wait = new WebDriverWait(driver, 10);
         homePage = new HomePage(driver, wait);
         mainPage = new MainPage(driver, wait);
+        blogPage = new BlogPage(driver, wait);
     }
 
     @DataProvider
