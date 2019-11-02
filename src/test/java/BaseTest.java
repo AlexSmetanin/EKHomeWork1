@@ -23,7 +23,7 @@ class BaseTest {
 
     @BeforeSuite
     public void before() {
-        File chromeDriver = new File(System.getProperty("chrome.driver.path"));  // new File(PropertyLoader.loadProperty("chrome.driver.path"));
+        File chromeDriver = new File(System.getProperty("chrome.driver.path"));
         ChromeDriverService service = new ChromeDriverService.Builder()
                 .usingDriverExecutable(chromeDriver)
                 .usingAnyFreePort()
@@ -41,7 +41,7 @@ class BaseTest {
     @DataProvider
     public Object[][] getCredentials() {
         return new Object[][]{
-                {"http://github.com", "AlexSmetanin", "Printer!23"},
+                {"AlexSmetanin", "Printer!23"},
         };
     }
 

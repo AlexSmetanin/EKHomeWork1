@@ -5,7 +5,8 @@ import static org.testng.Assert.assertEquals;
 public class TestLoginPageUsingPageObject extends BaseTest {
 
     @Test(dataProvider = "getCredentials")
-    public void login(String url, String login, String password) {
+    public void login(String login, String password) {
+        String url = System.getProperty("default.base.url");
         driver.navigate().to(url);
 
         homePage.logIn(login, password);
@@ -15,7 +16,6 @@ public class TestLoginPageUsingPageObject extends BaseTest {
         assertEquals(blogPage.getURL(driver),"https://github.blog/");
         assertEquals(blogPage.getTitle(driver),"The GitHub Blog");
         assertEquals(blogPage.getLogoTitile(), "The GitHub Blog");
-
     }
 
 }
