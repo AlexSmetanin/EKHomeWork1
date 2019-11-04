@@ -21,6 +21,7 @@
         <browser.name>chrome</browser.name>
         <headless>false</headless>
         <chrome.driver.path>/driver/chromedriver.exe</chrome.driver.path>
+        <base.url>https://github.com</base.url>
     </properties>
 
     <profiles>
@@ -45,6 +46,7 @@
             <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -60,13 +62,14 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>                
                 <configuration>
-		    <testFailureIgnore>true</testFailureIgnore>
+		            <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${suite.name}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <browser.name>${browser.name}</browser.name>
                         <chrome.driver.path>${chrome.driver.path}</chrome.driver.path>
+                        <base.url>${base.url}</base.url>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

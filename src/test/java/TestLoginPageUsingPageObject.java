@@ -6,7 +6,7 @@ public class TestLoginPageUsingPageObject extends BaseTest {
 
     @Test(dataProvider = "getCredentials")
     public void login(String login, String password) {
-        String url = System.getProperty("default.base.url");
+        String url = System.getProperty("base.url");
         driver.navigate().to(url);
 
         homePage.logIn(login, password);
