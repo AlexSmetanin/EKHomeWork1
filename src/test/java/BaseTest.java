@@ -5,9 +5,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import pages.BlogPage;
 import pages.HomePage;
+import pages.HomeWorkPage;
 import pages.MainPage;
 
 import java.io.File;
@@ -19,9 +21,10 @@ class BaseTest {
     HomePage homePage;
     MainPage mainPage;
     BlogPage blogPage;
+    HomeWorkPage homeWorkPage;
     WebDriverWait wait;
 
-    @BeforeSuite
+    @BeforeTest
     public void before() {
         File chromeDriver = new File(System.getProperty("chrome.driver.path"));
         ChromeDriverService service = new ChromeDriverService.Builder()
@@ -36,6 +39,7 @@ class BaseTest {
         homePage = new HomePage(driver, wait);
         mainPage = new MainPage(driver, wait);
         blogPage = new BlogPage(driver, wait);
+        homeWorkPage = new HomeWorkPage(driver, wait);
     }
 
     @DataProvider

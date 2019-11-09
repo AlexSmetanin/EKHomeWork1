@@ -5,6 +5,7 @@
                 <class name="TestLoginPageUsingPageObject">
                     <methods>
                         <include name="login"/>
+                        <include name="filesCount"/>
                     </methods>
                 </class>
             </classes>
