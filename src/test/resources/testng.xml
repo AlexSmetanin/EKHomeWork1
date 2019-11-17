@@ -2,12 +2,7 @@
 <suite name="Suite1">
         <test  name="SingIn">
             <classes>
-                <class name="TestLoginPageUsingPageObject">
-                    <methods>
-                        <include name="login"/>
-                        <include name="filesCount"/>
-                    </methods>
-                </class>
+                <class name="Lesson4Test"></class>
             </classes>
         </test>
 </suite>
