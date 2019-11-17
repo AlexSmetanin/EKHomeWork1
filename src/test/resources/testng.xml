@@ -5,6 +5,7 @@
                 <class name="Lesson4Test">
                     <methods>
                         <include name="githubLoginTest"/>
+                        <include name="searchTest"/>
                     </methods>
                 </class>
             </classes>

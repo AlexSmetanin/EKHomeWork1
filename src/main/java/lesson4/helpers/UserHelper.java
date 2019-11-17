@@ -19,5 +19,16 @@ public class UserHelper extends PageManager {
 
     public String getUsername() {return githubLoginPage.getUsername();}
 
+    public void searchForRepo(String text) {
+        homePage.searchForRepository(text);
+    }
+
+    public void selectFirstResult() {
+        searchPage.selectFirstSearchResult();
+    }
+
+    public String getSearchFieldValue(){
+        return homePage.getSearchFieldValue();
+    }
 }
 
