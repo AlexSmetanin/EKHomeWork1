@@ -10,5 +10,14 @@ public class UserHelper extends PageManager {
         super(AppManager.getWebDriver());
     }
 
+    public void loginAs(String username, String pass){
+        githubLoginPage.openLoginForm();
+        githubLoginPage.enterUsername(username);
+        githubLoginPage.enterPassword(pass);
+        githubLoginPage.submitLoginForm();
+    }
+
+    public String getUsername() {return githubLoginPage.getUsername();}
+
 }
 

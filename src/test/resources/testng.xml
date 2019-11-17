@@ -2,7 +2,11 @@
 <suite name="Suite1">
         <test  name="SingIn">
             <classes>
-                <class name="Lesson4Test"></class>
+                <class name="Lesson4Test">
+                    <methods>
+                        <include name="githubLoginTest"/>
+                    </methods>
+                </class>
             </classes>
         </test>
 </suite>
