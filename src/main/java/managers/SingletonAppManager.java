@@ -1,4 +1,4 @@
-package lesson4.managers;
+package managers;
 
 public class SingletonAppManager {
     private static SingletonAppManager singleInstance = null;

@@ -1,6 +1,6 @@
-package lesson4.helpers;
+package helpers;
 
-import lesson4.managers.AppManager;
+import managers.AppManager;
 import pages.PageManager;
 
 
@@ -18,17 +18,5 @@ public class UserHelper extends PageManager {
     }
 
     public String getUsername() {return githubLoginPage.getUsername();}
-
-    public void searchForRepo(String text) {
-        homePage.searchForRepository(text);
-    }
-
-    public void selectFirstResult() {
-        searchPage.selectFirstSearchResult();
-    }
-
-    public String getSearchFieldValue(){
-        return homePage.getSearchFieldValue();
-    }
 }
 

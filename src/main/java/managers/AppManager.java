@@ -1,6 +1,7 @@
-package lesson4.managers;
+package managers;
 
-import lesson4.helpers.UserHelper;
+import helpers.RepositoryHelper;
+import helpers.UserHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class AppManager {
 
     private UserHelper userHelper;
+    private RepositoryHelper repositoryHelper;
 
     private static WebDriver driver;
 
@@ -27,9 +29,13 @@ public class AppManager {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         userHelper = new UserHelper();
+        repositoryHelper = new RepositoryHelper();
     }
 
     public static WebDriver getWebDriver() { return driver;}
 
     public UserHelper getUserHelper() {return userHelper;}
+
+    public RepositoryHelper getRepositoryHelper() {return repositoryHelper;}
+
 }

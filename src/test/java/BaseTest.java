@@ -1,5 +1,5 @@
-import lesson4.managers.AppManager;
-import lesson4.managers.SingletonAppManager;
+import managers.AppManager;
+import managers.SingletonAppManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
