@@ -1,41 +1,47 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
-    private WebDriverWait wait;
+import java.util.List;
 
-    public static final String signInLinkLocator = "//a[@href='/login']";
-    public static final String usernameFieldLocator = "//input[@id='login_field']";
-    public static final String passwordFieldLocator = "//input[@id='password']";
-    public static final String submitButtonLocator = "//input[@name='commit']";
+public class HomePage extends Page {
 
-    public HomePage(WebDriver driver, WebDriverWait wait) {
-        PageFactory.initElements(driver, this);
-        this.wait = wait;
+    public HomePage(PageManager pages) {
+        super(pages);
     }
 
-    @FindBy(xpath = signInLinkLocator)
-    private WebElement signInLink;
-    @FindBy(xpath = usernameFieldLocator)
-    private WebElement usernameField;
-    @FindBy(xpath = passwordFieldLocator)
-    private WebElement passwordField;
-    @FindBy(xpath = submitButtonLocator)
-    private WebElement submitButton;
+    @FindBy(xpath = "//button[contains(.,'Show more')]")
+        private WebElement showMoreButton;
 
-    public void logIn(String login, String password) {
-        wait.until(ExpectedConditions.visibilityOf(signInLink));
-        signInLink.click();
-        usernameField.clear();
-        usernameField.sendKeys(login);
-        passwordField.clear();
-        passwordField.sendKeys(password);
-        submitButton.click();
+    @FindBy(xpath = "//ul[@data-filterable-for='dashboard-repos-filter-left']/li")
+        private List<WebElement> repositoryList;
+
+    @FindBy(xpath = "//input[@name='q']")
+        private WebElement searchField;
+
+    public int repositoryCount() {
+        wait.until(ExpectedConditions.visibilityOf(showMoreButton));
+        showMoreButton.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        wait.until(ExpectedConditions.invisibilityOf(showMoreButton));
+        return repositoryList.size();
     }
+
+    public void searchForRepository(String text) {
+        wait.until(ExpectedConditions.visibilityOf(searchField));
+        searchField.clear();
+        searchField.sendKeys(text);
+    }
+
+    public String getSearchFieldValue() {
+        wait.until(ExpectedConditions.visibilityOf(searchField));
+        return searchField.getAttribute("value");
+    }
+
 }
