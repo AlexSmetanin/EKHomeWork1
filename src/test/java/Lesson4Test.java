@@ -39,12 +39,12 @@ public class Lesson4Test extends BaseTest {
 
     @Test (priority=5)
     public void searchTest() {
-        app.getRepositoryHelper().searchForRepo("Selenium");
-        app.getRepositoryHelper().selectFirstResult();
+        app.getSearchHelper().searchForRepo("Selenium");
+        app.getSearchHelper().selectFirstResult();
         assertTrue(driver.getCurrentUrl().contains("q=Selenium"));
         https://github.com/search?q=Java
         assertEquals(driver.getCurrentUrl(), "https://github.com/search?q=Selenium");
-        assertEquals(app.getRepositoryHelper().getSearchFieldValue(), "Selenium");
+        assertEquals(app.getSearchHelper().getSearchFieldValue(), "Selenium");
     }
 
 }

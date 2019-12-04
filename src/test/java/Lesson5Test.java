@@ -13,16 +13,16 @@ public class Lesson5Test extends BaseTest {
 
     @Test
     public void searchTest() {
-        app.getRepositoryHelper().searchForRepo("Java");
-        app.getRepositoryHelper().jumpToResults();
-        app.getRepositoryHelper().selectFirstResult();
+        app.getSearchHelper().searchForRepo("Java");
+        app.getSearchHelper().jumpToResults();
+        app.getSearchHelper().selectFirstResult();
         String firstResultUrl = driver.getCurrentUrl();
         assertEquals(firstResultUrl, "https://github.com/TheAlgorithms/Java");
 
         driver.navigate().back();
-        app.getRepositoryHelper().changeSort();
+        app.getSearchHelper().changeSort();
         driver.navigate().refresh();
-        app.getRepositoryHelper().selectFirstResult();
+        app.getSearchHelper().selectFirstResult();
         assertFalse(driver.getCurrentUrl()==firstResultUrl);
     }
 

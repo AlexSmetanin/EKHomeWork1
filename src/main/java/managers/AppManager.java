@@ -1,6 +1,7 @@
 package managers;
 
 import helpers.RepositoryHelper;
+import helpers.SearchHelper;
 import helpers.UserHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ public class AppManager {
 
     private UserHelper userHelper;
     private RepositoryHelper repositoryHelper;
+    private SearchHelper searchHelper;
 
     private static WebDriver driver;
 
@@ -30,6 +32,7 @@ public class AppManager {
         driver.manage().window().maximize();
         userHelper = new UserHelper();
         repositoryHelper = new RepositoryHelper();
+        searchHelper = new SearchHelper();
     }
 
     public static WebDriver getWebDriver() { return driver;}
@@ -37,5 +40,8 @@ public class AppManager {
     public UserHelper getUserHelper() {return userHelper;}
 
     public RepositoryHelper getRepositoryHelper() {return repositoryHelper;}
+
+    public SearchHelper getSearchHelper() {return searchHelper;}
+
 
 }

@@ -18,9 +18,6 @@ public class HomePage extends Page {
     @FindBy(xpath = "//ul[@data-filterable-for='dashboard-repos-filter-left']/li")
         private List<WebElement> repositoryList;
 
-    @FindBy(xpath = "//input[@name='q']")
-        private WebElement searchField;
-
     public int repositoryCount() {
         wait.until(ExpectedConditions.visibilityOf(showMoreButton));
         showMoreButton.click();
@@ -31,17 +28,6 @@ public class HomePage extends Page {
         }
         wait.until(ExpectedConditions.invisibilityOf(showMoreButton));
         return repositoryList.size();
-    }
-
-    public void searchForRepository(String text) {
-        wait.until(ExpectedConditions.visibilityOf(searchField));
-        searchField.clear();
-        searchField.sendKeys(text);
-    }
-
-    public String getSearchFieldValue() {
-        wait.until(ExpectedConditions.visibilityOf(searchField));
-        return searchField.getAttribute("value");
     }
 
 }

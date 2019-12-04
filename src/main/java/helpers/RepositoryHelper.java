@@ -32,14 +32,4 @@ public class RepositoryHelper extends PageManager {
         return repositoryPage.getDeleteMessage();
     }
 
-    public void searchForRepo(String text) {
-        homePage.searchForRepository(text);
-    }
-    public void jumpToResults() {
-        searchPage.jumpToResults();
-    }
-    public void selectFirstResult() { searchPage.selectFirstSearchResult(); }
-    public void changeSort() {searchPage.changeSort();}
-    public String getSearchFieldValue(){return homePage.getSearchFieldValue(); }
-
 }
