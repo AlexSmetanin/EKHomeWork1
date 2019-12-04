@@ -2,13 +2,10 @@
 <suite name="Suite1">
         <test  name="SingIn">
             <classes>
-                <class name="Lesson4Test">
+                <class name="TestLoginPageUsingPageObject">
                     <methods>
-                        <include name="githubLoginTest"/>
-                        <include name="repositoryCountTest"/>
-                        <include name="createNewRepositoryTest"/>
-                        <include name="deleteRepositoryTest"/>
-                        <include name="searchTest"/>
+                        <include name="login"/>
+                        <include name="filesCount"/>
                     </methods>
                 </class>
             </classes>
