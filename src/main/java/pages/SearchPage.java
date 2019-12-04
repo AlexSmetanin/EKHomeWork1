@@ -1,9 +1,13 @@
 package pages;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+import java.util.Random;
 
 public class SearchPage extends Page {
 
@@ -13,6 +17,8 @@ public class SearchPage extends Page {
 
     public static final String jumpToResultsLocator = "(id('jump-to-results')/li)[2]";
     public static final String firstSearchResultLocator = "((//*[@class='repo-list']/li)[1])/div/div/a";
+    public static final String changeSortDropdownLocator = "//summary/i";
+    public static final String changeSortOptionLocator = "//div[@class='select-menu-list']/a";
 
     @FindBy(xpath = jumpToResultsLocator)
     private WebElement jumpToResults;
@@ -20,6 +26,11 @@ public class SearchPage extends Page {
     @FindBy(xpath = firstSearchResultLocator)
     private WebElement firstSearchResult;
 
+    @FindBy(xpath = changeSortDropdownLocator)
+    private WebElement changeSortDropdown;
+
+    @FindBy(xpath = changeSortOptionLocator)
+    private List<WebElement> changeSortOption;
 
     public void jumpToResults() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(jumpToResultsLocator)));
@@ -30,4 +41,13 @@ public class SearchPage extends Page {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(firstSearchResultLocator)));
         firstSearchResult.click();
     }
+
+    public void changeSort() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(changeSortDropdownLocator)));
+        changeSortDropdown.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(changeSortOptionLocator)));
+        changeSortOption.get(new Random().nextInt(7)).click();
+    }
+
+
 }

@@ -1,7 +1,6 @@
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class Lesson5Test extends BaseTest {
 
@@ -17,9 +16,14 @@ public class Lesson5Test extends BaseTest {
         app.getRepositoryHelper().searchForRepo("Java");
         app.getRepositoryHelper().jumpToResults();
         app.getRepositoryHelper().selectFirstResult();
-        assertEquals(driver.getCurrentUrl(), "https://github.com/TheAlgorithms/Java");
-        driver.navigate().back();
+        String firstResultUrl = driver.getCurrentUrl();
+        assertEquals(firstResultUrl, "https://github.com/TheAlgorithms/Java");
 
+        driver.navigate().back();
+        app.getRepositoryHelper().changeSort();
+        driver.navigate().refresh();
+        app.getRepositoryHelper().selectFirstResult();
+        assertFalse(driver.getCurrentUrl()==firstResultUrl);
     }
 
 }

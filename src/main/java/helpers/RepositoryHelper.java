@@ -39,6 +39,7 @@ public class RepositoryHelper extends PageManager {
         searchPage.jumpToResults();
     }
     public void selectFirstResult() { searchPage.selectFirstSearchResult(); }
+    public void changeSort() {searchPage.changeSort();}
     public String getSearchFieldValue(){return homePage.getSearchFieldValue(); }
 
 }
