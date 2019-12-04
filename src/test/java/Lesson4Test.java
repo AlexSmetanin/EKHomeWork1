@@ -42,6 +42,7 @@ public class Lesson4Test extends BaseTest {
         app.getRepositoryHelper().searchForRepo("Selenium");
         app.getRepositoryHelper().selectFirstResult();
         assertTrue(driver.getCurrentUrl().contains("q=Selenium"));
+        https://github.com/search?q=Java
         assertEquals(driver.getCurrentUrl(), "https://github.com/search?q=Selenium");
         assertEquals(app.getRepositoryHelper().getSearchFieldValue(), "Selenium");
     }

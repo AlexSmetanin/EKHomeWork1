@@ -35,11 +35,10 @@ public class RepositoryHelper extends PageManager {
     public void searchForRepo(String text) {
         homePage.searchForRepository(text);
     }
-    public void selectFirstResult() {
-        searchPage.selectFirstSearchResult();
+    public void jumpToResults() {
+        searchPage.jumpToResults();
     }
-    public String getSearchFieldValue(){
-        return homePage.getSearchFieldValue();
-    }
+    public void selectFirstResult() { searchPage.selectFirstSearchResult(); }
+    public String getSearchFieldValue(){return homePage.getSearchFieldValue(); }
 
 }
