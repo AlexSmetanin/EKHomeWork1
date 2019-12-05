@@ -14,7 +14,6 @@ public class Lesson5Test extends BaseTest {
     @Test
     public void searchTest() {
         app.getSearchHelper().searchForRepo("Java");
-        app.getSearchHelper().jumpToResults();
         app.getSearchHelper().selectFirstResult();
         String firstResultUrl = driver.getCurrentUrl();
         assertEquals(firstResultUrl, "https://github.com/TheAlgorithms/Java");

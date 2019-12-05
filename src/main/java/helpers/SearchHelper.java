@@ -11,9 +11,6 @@ public class SearchHelper extends PageManager {
 
     public void searchForRepo(String text) {
         searchPage.searchForRepository(text);
-    }
-
-    public void jumpToResults() {
         searchPage.jumpToResults();
     }
 
