@@ -16,6 +16,8 @@ public class SearchHelper extends PageManager {
 
     public void selectFirstResult() { searchPage.selectFirstSearchResult(); }
 
+    public int countStars() {return searchPage.countStars();}
+
     public void changeSort() {searchPage.changeSort();}
 
     public String getSearchFieldValue(){return searchPage.getSearchFieldValue(); }

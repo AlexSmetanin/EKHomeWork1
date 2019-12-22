@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ public class SearchPage extends Page {
     public static final String firstSearchResultLocator = "((//*[@class='repo-list']/li)[1])/div/div/a";
     public static final String changeSortDropdownLocator = "//summary/i";
     public static final String changeSortOptionLocator = "//div[@class='select-menu-list']/a";
+    public static final String starsCountLocator = "//a[contains(@href,'stargazers')]";
 
     @FindBy(xpath = searchFieldLocator)
     private WebElement searchField;
@@ -34,6 +36,9 @@ public class SearchPage extends Page {
 
     @FindBy(xpath = changeSortOptionLocator)
     private List<WebElement> changeSortOption;
+
+    @FindBy(xpath = starsCountLocator)
+    private List<WebElement> starsCount;
 
     public void searchForRepository(String text) {
         wait.until(ExpectedConditions.visibilityOf(searchField));
@@ -63,5 +68,20 @@ public class SearchPage extends Page {
         changeSortOption.get(new Random().nextInt(7)).click();
     }
 
-
+    public int countStars() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(starsCountLocator)));
+        HashSet<String> starsList = new HashSet();
+        int sum = 0;
+        for (WebElement item : starsCount) {
+            String str = item.getText().trim();
+            starsList.add(str);
+            if (str.contains("k"))
+                sum += Float.valueOf(str.replaceAll("k", "")) * 1000;
+            else
+                sum += Integer.valueOf(str);
+        }
+        System.out.println(starsList);
+        System.out.println("Sum = " + sum);
+        return sum;
+    }
 }
