@@ -11,6 +11,9 @@ class BaseTest {
 
     @BeforeSuite
     public void before() {
+        driver.navigate().to("https://github.com");
+        app.getUserHelper().loginAs("AlexSmetanin", "Printer!23");
+        // assertEquals(app.getUserHelper().getUsername(), "@AlexSmetanin");
     }
 
     @AfterSuite

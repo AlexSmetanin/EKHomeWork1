@@ -25,7 +25,6 @@ public class RepositoryPage extends Page {
     @FindBy(xpath = "//h1/strong/a")
     private WebElement newRepositoryName;
 
-
     @FindBy(xpath = "//a[contains(.,'Settings') and not(@role)]")
     private WebElement settingsButton;
 
@@ -42,10 +41,9 @@ public class RepositoryPage extends Page {
     private WebElement successDeleteMessage;
 
 
-
     // Create new repository
 
-    public void openCreateRepositoryForm(){
+    public void openCreateRepositoryForm() {
         wait.until(ExpectedConditions.visibilityOf(createNewDropdown));
         createNewDropdown.click();
         wait.until(ExpectedConditions.visibilityOf(newRepositoryButton));
@@ -58,12 +56,12 @@ public class RepositoryPage extends Page {
         repositoryNameInputField.sendKeys(repositoryName);
     }
 
-    public void submitCreateForm(){
+    public void submitCreateForm() {
         wait.until(ExpectedConditions.elementToBeClickable(createRepositoryButton));
         createRepositoryButton.click();
     }
 
-    public String getRepositoryName(){
+    public String getRepositoryName() {
         wait.until(ExpectedConditions.visibilityOf(newRepositoryName));
         return newRepositoryName.getText();
     }
@@ -71,7 +69,7 @@ public class RepositoryPage extends Page {
 
     // Delete repository
 
-    public void openSettingsForm(){
+    public void openSettingsForm() {
         wait.until(ExpectedConditions.visibilityOf(settingsButton));
         settingsButton.click();
     }
@@ -87,7 +85,7 @@ public class RepositoryPage extends Page {
         inputDeleteRepositoryNameField.sendKeys(repositoryName);
     }
 
-    public void submitDeleteRepositoryForm(){
+    public void submitDeleteRepositoryForm() {
         wait.until(ExpectedConditions.elementToBeClickable(confirmDeleteRepositoryButton));
         confirmDeleteRepositoryButton.click();
     }
