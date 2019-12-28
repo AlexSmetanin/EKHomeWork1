@@ -18,6 +18,8 @@ public class SearchHelper extends PageManager {
 
     public int countStars() {return searchPage.countStars();}
 
+    public int countLanguages(String lang) { return searchPage.countLanguages(lang);}
+
     public void changeSort() {searchPage.changeSort();}
 
     public String getSearchFieldValue(){return searchPage.getSearchFieldValue(); }

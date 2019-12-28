@@ -84,4 +84,10 @@ public class SearchPage extends Page {
         System.out.println("Sum = " + sum);
         return sum;
     }
+
+    public int countLanguages(String lang){
+        Integer str = Integer.valueOf(driver.findElement(By.xpath("//a[contains(.,'"+lang+"')]/span")).getText().replaceAll(",",""));
+        System.out.println(str);
+        return str;
+    }
 }
