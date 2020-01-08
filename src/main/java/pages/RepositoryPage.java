@@ -82,7 +82,7 @@ public class RepositoryPage extends Page {
     public void inputDeleteRepositoryName(String repositoryName) {
         wait.until(ExpectedConditions.visibilityOf(inputDeleteRepositoryNameField));
         inputDeleteRepositoryNameField.clear();
-        inputDeleteRepositoryNameField.sendKeys(repositoryName);
+        inputDeleteRepositoryNameField.sendKeys("AlexSmetanin/"+repositoryName);
     }
 
     public void submitDeleteRepositoryForm() {

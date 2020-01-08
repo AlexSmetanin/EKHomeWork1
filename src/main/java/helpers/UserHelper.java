@@ -1,5 +1,6 @@
 package helpers;
 
+import io.qameta.allure.Step;
 import managers.AppManager;
 import pages.PageManager;
 
@@ -10,6 +11,7 @@ public class UserHelper extends PageManager {
         super(AppManager.getWebDriver());
     }
 
+    @Step("Login to Github with username: {0}, password: {1}")
     public void loginAs(String username, String pass){
         githubLoginPage.openLoginForm();
         githubLoginPage.enterUsername(username);
@@ -17,6 +19,7 @@ public class UserHelper extends PageManager {
         githubLoginPage.submitLoginForm();
     }
 
+    @Step("Return Github username")
     public String getUsername() {return githubLoginPage.getUsername();}
 }
 
