@@ -4,10 +4,14 @@
             <classes>
                 <class name="Lesson4Test">
                     <methods>
-                        <include name="githubLoginTest"/>
                         <include name="repositoryCountTest"/>
                         <include name="createNewRepositoryTest"/>
                         <include name="deleteRepositoryTest"/>
+                        <include name="searchTest"/>
+                    </methods>
+                </class>
+                <class name="Lesson5Test">
+                    <methods>
                         <include name="searchTest"/>
                     </methods>
                 </class>
