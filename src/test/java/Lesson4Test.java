@@ -8,13 +8,6 @@ public class Lesson4Test extends BaseTest {
 
     String randomString;
 
-    @Test (priority=1)
-    public void githubLoginTest() {
-        driver.navigate().to("https://github.com");
-        app.getUserHelper().loginAs("AlexSmetanin", "Printer!23");
-        assertEquals(app.getUserHelper().getUsername(), "@AlexSmetanin");
-    }
-
     @Test (priority=2)
     public void repositoryCountTest() throws InterruptedException {
         assertEquals(8,app.getRepositoryHelper().repositoryCount());
@@ -40,9 +33,7 @@ public class Lesson4Test extends BaseTest {
     @Test (priority=5)
     public void searchTest() {
         app.getSearchHelper().searchForRepo("Selenium");
-        app.getSearchHelper().selectFirstResult();
         assertTrue(driver.getCurrentUrl().contains("q=Selenium"));
-        https://github.com/search?q=Java
         assertEquals(driver.getCurrentUrl(), "https://github.com/search?q=Selenium");
         assertEquals(app.getSearchHelper().getSearchFieldValue(), "Selenium");
     }

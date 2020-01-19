@@ -23,6 +23,7 @@
         <chrome.driver.path>/driver/chromedriver.exe</chrome.driver.path>
         <base.url>https://github.com</base.url>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <profiles>
@@ -60,6 +61,12 @@
             <version>3.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -74,13 +81,22 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${suite.name}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <systemPropertyVariables>
                         <browser.name>${browser.name}</browser.name>
                         <chrome.driver.path>${chrome.driver.path}</chrome.driver.path>
                         <base.url>${base.url}</base.url>
                     </systemPropertyVariables>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
