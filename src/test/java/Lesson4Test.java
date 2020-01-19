@@ -1,8 +1,11 @@
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import static utility.CustomTestListener.*;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import org.apache.commons.lang3.RandomStringUtils;
+import utility.CustomTestListener;
 
 public class Lesson4Test extends BaseTest {
 
@@ -10,7 +13,7 @@ public class Lesson4Test extends BaseTest {
 
     @Test (priority=2)
     public void repositoryCountTest() throws InterruptedException {
-        assertEquals(8,app.getRepositoryHelper().repositoryCount());
+        assertEquals(9,app.getRepositoryHelper().repositoryCount());
     }
 
     @Test (priority=3)
