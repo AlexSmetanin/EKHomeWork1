@@ -1,3 +1,4 @@
+import io.qameta.allure.Attachment;
 import managers.AppManager;
 import managers.SingletonAppManager;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,11 @@ class BaseTest {
         driver.navigate().to("https://github.com");
         app.getUserHelper().loginAs("AlexSmetanin", "Printer!23");
         // assertEquals(app.getUserHelper().getUsername(), "@AlexSmetanin");
+    }
+
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshot(byte[] screenShot) {
+        return screenShot;
     }
 
     @AfterSuite
