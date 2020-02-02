@@ -1,9 +1,16 @@
+import io.qameta.allure.Description;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utility.CustomTestListener;
 
 import static org.testng.Assert.*;
 
+@Listeners({CustomTestListener.class})
+
 public class Lesson5Test extends BaseTest {
 
+    @Description("Ищем репозиторий содержащий нужное слово, подсчитываем количество звезд в каждом репозитории" +
+    "")
     @Test
     public void searchTest() {
 

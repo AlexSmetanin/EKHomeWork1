@@ -17,10 +17,7 @@ class BaseTest {
         // assertEquals(app.getUserHelper().getUsername(), "@AlexSmetanin");
     }
 
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshot(byte[] screenShot) {
-        return screenShot;
-    }
+    //TODO login in before method and logout in after method
 
     @AfterSuite
     public void tearDown() {

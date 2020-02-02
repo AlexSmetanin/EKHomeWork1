@@ -40,6 +40,7 @@ public class SearchPage extends Page {
     @FindBy(xpath = starsCountLocator)
     private List<WebElement> starsCount;
 
+    //TODO steps
     public void searchForRepository(String text) {
         wait.until(ExpectedConditions.visibilityOf(searchField));
         searchField.clear();
@@ -70,15 +71,15 @@ public class SearchPage extends Page {
 
     public int countStars() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(starsCountLocator)));
-        HashSet<String> starsList = new HashSet();
+        HashSet<String> starsList = new HashSet<>();
         int sum = 0;
         for (WebElement item : starsCount) {
             String str = item.getText().trim();
             starsList.add(str);
             if (str.contains("k"))
-                sum += Float.valueOf(str.replaceAll("k", "")) * 1000;
+                sum += Float.parseFloat(str.replaceAll("k", "")) * 1000;
             else
-                sum += Integer.valueOf(str);
+                sum += Integer.parseInt(str);
         }
         System.out.println(starsList);
         System.out.println("Sum = " + sum);
@@ -86,7 +87,7 @@ public class SearchPage extends Page {
     }
 
     public int countLanguages(String lang){
-        Integer str = Integer.valueOf(driver.findElement(By.xpath("//a[contains(.,'"+lang+"')]/span")).getText().replaceAll(",",""));
+        int str = Integer.parseInt(driver.findElement(By.xpath("//a[contains(.,'" + lang + "')]/span")).getText().replaceAll(",", ""));
         System.out.println(str);
         return str;
     }
